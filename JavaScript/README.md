@@ -22,22 +22,23 @@ npm install oci-sdk
 8. Create new file named Producer.js in this directory and paste the following code in it.
 ```JavaScript
 
-const common = require("oci-common");
 
-// OCI SDK package for OSS
-const st = require("oci-streaming");
+const common = require("oci-common");
+const st = require("oci-streaming"); // OCI SDK package for OSS
+
+const ociConfigFile = "YOUR_OCI_CONFGI_FILE_PATH";
+const ociProfileName = "YOUR_OCI_PROFILE_FOR_USER_WHO_CREATED_THE_STREAM";
+const ociMessageEndpointForStream = "MESSAGE_ENDPOINT_FROM_STREAM_CREATION_STEP";
+const ociStreamOcid = "OCID_FOR_THE_STREAM_YOU_CREATED";
 
 // provide authentication for OCI and OSS
-const provider = new common.ConfigFileAuthenticationDetailsProvider("C:\\.oci\\config", "DEFAULT");
-
-
+const provider = new common.ConfigFileAuthenticationDetailsProvider(ociConfigFile, ociProfileName);
+  
 async function main() {
   // OSS client to produce and consume messages from a Stream in OSS
   const client = new st.StreamClient({ authenticationDetailsProvider: provider });
 
-
-  client.endpoint = "https://cell-1.streaming.ap-mumbai-1.oci.oraclecloud.com";
-  const streamId = "ocid1.stream.oc1.ap-mumbai-1.amaaaaaauwpiejqap7zi4qveifbb6rh7qamqedjhkphqdejdb4bsg7bfnjla";
+  client.endpoint = ociMessageEndpointForStream;
 
   // build up a putRequest and publish some messages to the stream
   let messages = [];
@@ -49,11 +50,11 @@ async function main() {
     messages.push(entry);
   }
 
-  console.log("Publishing %s messages to stream %s.", messages.length, streamId);
+  console.log("Publishing %s messages to stream %s.", messages.length, ociStreamOcid);
   const putMessageDetails = { messages: messages };
   const putMessagesRequest = {
     putMessagesDetails: putMessageDetails,
-    streamId: streamId
+    streamId: ociStreamOcid
   };
   const putMessageResponse = await client.putMessages(putMessagesRequest);
   for (var entry of putMessageResponse.putMessagesResult.entries)
