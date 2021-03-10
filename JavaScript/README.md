@@ -162,7 +162,7 @@ node run Consumer.js
 ```
 5. You should see the messages as shown below. Note when we produce message from OCI Web Console(as described above in first step), the Key for each message is *Null*
 ```
-C:\ws\ossJsConsumer>node Consumer.js
+$:/path/to/directory/wd>node Consumer.js
 Starting a simple message loop with a group cursor
 Creating a cursor for group exampleGroup, instance exampleInstance-1.
 Read 1 messages.
