@@ -1,5 +1,5 @@
 
-# OCI JavaScript SDK for OSS
+# QuckStart with OCI JavaScript SDK for OSS
 
 This quickstart shows how to produce messages to and consume messages from an **Oracle Streaming Service**{oss docs link @jb} using the OCI JavaScript SDK{github link @jb}.
 
@@ -66,8 +66,9 @@ main().catch((err) => {
   console.log("Error occurred: ", err);
 });
 ```
-10. sfdsdf
-4.sdfdsfsef
+10. In the OCI Web Console, quickly go to your Stream Page and click on *Load Messages* button. You should see the messages we just produced as below.
+![See Produced Messages in OCI Wb Console](https://1drv.ms/u/s!ApqaXJxWiFghcrJsw-WQg8XR7IE?e=xxT7ou)
+
   
 
 
