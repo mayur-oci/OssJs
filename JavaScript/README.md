@@ -1,5 +1,5 @@
 
-# QuckStart with OCI JavaScript SDK for OSS
+# QuickStart with OCI JavaScript SDK for OSS
 
 This quickstart shows how to produce messages to and consume messages from an **Oracle Streaming Service**{oss docs link @jb} using the OCI JavaScript SDK{github link @jb}.
 
@@ -70,7 +70,94 @@ main().catch((err) => {
 ![See Produced Messages in OCI Wb Console](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/StreamExampleLoadMessages.png?raw=true)
 
   
+## Consuming messages from OSS
+0. First produce message to the stream you want to consumer message from unless you already have messages in the stream. You can produce message easily from *OCI Web Console* using simple *Produce Test Message* button as shown below
+![Produce Test Message Button](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/ProduceButton.png?raw=true)
+ 
+ ![Produce multiple test message by clicking Produce button](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/ActualProduceMessagePopUp.png?raw=true)
+2. Open your favorite editor, such as [Visual Studio Code](https://code.visualstudio.com) from the directory *wd*. You should already have oci-sdk packages for JavaScript installed in this directory(as per the *step 5 of Prerequisites* section ).
+3. Create new file named Producer.js in this directory and paste the following code in it.
+```JavaScript
+const common = require("oci-common");
+const st = require("oci-streaming"); // OCI SDK package for OSS
 
+const ociConfigFile = "C:\\.oci\\config";
+const ociProfileName = "DEFAULT";
+const ociMessageEndpointForStream = "https://cell-1.streaming.ap-mumbai-1.oci.oraclecloud.com";
+const ociStreamOcid = "ocid1.stream.oc1.ap-mumbai-1.amaaaaaauwpiejqaxcfc2ht67wwohfg7mxcstfkh2kp3hweeenb3zxtr5khq";
+
+// provide authentication for OCI and OSS
+const provider = new common.ConfigFileAuthenticationDetailsProvider(ociConfigFile, ociProfileName);
+  
+const consumerGroupName = "exampleGroup";
+const consumerGroupInstanceName = "exampleInstance-1";
+
+async function main() {
+  // OSS client to produce and consume messages from a Stream in OSS
+  const client = new st.StreamClient({ authenticationDetailsProvider: provider });
+  client.endpoint = ociMessageEndpointForStream;
+
+  // A cursor can be created as part of a consumer group.
+  // Committed offsets are managed for the group, and partitions
+  // are dynamically balanced amongst consumers in the group.
+  console.log("Starting a simple message loop with a group cursor");
+  const groupCursor = await getCursorByGroup(client, ociStreamOcid, consumerGroupName, consumerGroupInstanceName);
+  await consumerMsgLoop(client, ociStreamOcid, groupCursor);
+}
+
+main().catch((err) => {
+    console.log("Error occurred: ", err);
+}); 
+
+async function consumerMsgLoop(client, streamId, initialCursor) {
+    let cursor = initialCursor;
+    for (var i = 0; i < 10; i++) {
+      const getRequest = {
+        streamId: streamId,
+        cursor: cursor,
+        limit: 2
+      };
+      const response = await client.getMessages(getRequest);
+      console.log("Read %s messages.", response.items.length);
+      for (var message of response.items) {
+        if (message.key !== null)  {         
+            console.log("%s: %s",
+            Buffer.from(message.key, "base64").toString(),
+            Buffer.from(message.value, "base64").toString());
+        }
+       else{
+            console.log("Null: %s",
+                Buffer.from(message.value, "base64").toString() );
+       }
+      }
+      // getMessages is a throttled method; clients should retrieve sufficiently large message
+      // batches, as to avoid too many http requests.
+      await delay(2);
+      cursor = response.opcNextCursor;
+    }
+  }
+  
+
+async function getCursorByGroup(client, streamId, groupName, instanceName) {
+    console.log("Creating a cursor for group %s, instance %s.", groupName, instanceName);
+    const cursorDetails = {
+      groupName: groupName,
+      instanceName: instanceName,
+      type: st.models.CreateGroupCursorDetails.Type.TrimHorizon,
+      commitOnGet: true
+    };
+    const createCursorRequest = {
+      createGroupCursorDetails: cursorDetails,
+      streamId: streamId
+    };
+    const response = await client.createGroupCursor(createCursorRequest);
+    return response.cursor.value;
+}
+
+async function delay(s) {
+    return new Promise(resolve => setTimeout(resolve, s * 1000));
+}
+```
 
 
 
