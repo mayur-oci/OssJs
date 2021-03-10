@@ -67,7 +67,7 @@ main().catch((err) => {
 });
 ```
 10. In the OCI Web Console, quickly go to your Stream Page and click on *Load Messages* button. You should see the messages we just produced as below.
-![See Produced Messages in OCI Wb Console](https://1drv.ms/u/s!ApqaXJxWiFghcrJsw-WQg8XR7IE?e=xxT7ou)
+![See Produced Messages in OCI Wb Console](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/StreamExampleLoadMessages.png?raw=true)
 
   
 
