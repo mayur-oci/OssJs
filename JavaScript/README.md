@@ -1,5 +1,5 @@
 
-# QuickStart with OCI JavaScript SDK for OSS
+# Quickstart with OCI JavaScript SDK for OSS
 
 This quickstart shows how to produce messages to and consume messages from an **Oracle Streaming Service**{oss docs link @jb} using the OCI JavaScript SDK{github link @jb}.
 
