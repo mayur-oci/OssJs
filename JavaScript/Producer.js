@@ -35,4 +35,9 @@ async function main() {
   const putMessageResponse = await client.putMessages(putMessagesRequest);
   for (var entry of putMessageResponse.putMessagesResult.entries)
     console.log("Published messages to parition %s, offset %s", entry.partition, entry.offset);
+
 }
+
+main().catch((err) => {
+  console.log("Error occurred: ", err);
+});
