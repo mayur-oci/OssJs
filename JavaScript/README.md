@@ -1,5 +1,5 @@
 
-# QuickStart with OCI JavaScript SDK for OSS
+# QuckStart with OCI JavaScript SDK for OSS
 
 This quickstart shows how to produce messages to and consume messages from an **Oracle Streaming Service**{oss docs link @jb} using the OCI JavaScript SDK{github link @jb}.
 
@@ -19,10 +19,8 @@ npm install oci-sdk
 
 ## Producing messages to OSS
 1. Open your favorite editor, such as [Visual Studio Code](https://code.visualstudio.com) from the directory *wd*. You should already have oci-sdk packages for JavaScript installed in this directory(as per the *step 5 of Prerequisites* section ).
-2. Create new file named Producer.js in this directory and paste the following code in it.
+2. Create new file named *Producer.js* in this directory and paste the following code in it.
 ```JavaScript
-
-
 const common = require("oci-common");
 const st = require("oci-streaming"); // OCI SDK package for OSS
 
@@ -71,12 +69,12 @@ main().catch((err) => {
 
   
 ## Consuming messages from OSS
-0. First produce message to the stream you want to consumer message from unless you already have messages in the stream. You can produce message easily from *OCI Web Console* using simple *Produce Test Message* button as shown below
+1. First produce message to the stream you want to consumer message from unless you already have messages in the stream. You can produce message easily from *OCI Web Console* using simple *Produce Test Message* button as shown below
 ![Produce Test Message Button](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/ProduceButton.png?raw=true)
  
  ![Produce multiple test message by clicking Produce button](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/ActualProduceMessagePopUp.png?raw=true)
 2. Open your favorite editor, such as [Visual Studio Code](https://code.visualstudio.com) from the directory *wd*. You should already have oci-sdk packages for JavaScript installed in this directory(as per the *step 5 of Prerequisites* section ).
-3. Create new file named Producer.js in this directory and paste the following code in it.
+3. Create new file named *Consumer.js* in this directory and paste the following code in it.
 ```JavaScript
 const common = require("oci-common");
 const st = require("oci-streaming"); // OCI SDK package for OSS
@@ -158,6 +156,25 @@ async function delay(s) {
     return new Promise(resolve => setTimeout(resolve, s * 1000));
 }
 ```
-
-
-
+4. Run the code on the terminal(from the same directory *wd*) follows 
+```
+node run Consumer.js
+```
+5. You should see the messages as shown below. Note when we produce message from OCI Web Console(as described above in first step), the Key for each message is *Null*
+```
+C:\ws\ossJsConsumer>node Consumer.js
+Starting a simple message loop with a group cursor
+Creating a cursor for group exampleGroup, instance exampleInstance-1.
+Read 1 messages.
+Null: Example Test Message 0
+Read 1 messages.
+Null: Example Test Message 0
+Read 1 messages.
+Null: Example Test Message 0
+Read 2 messages.
+Null: Example Test Message 0
+Null: Example Test Message 0
+Read 2 messages.
+Null: Example Test Message 0
+Null: Example Test Message 0
+```
