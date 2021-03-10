@@ -6,7 +6,7 @@ This quickstart shows how to produce messages to and consume messages from an **
 ## Prerequisites
 
 1. You need have OCI account subscription or free account. typical links @jb
-2. Follow these steps[TODO] to create Streampool and Stream in OCI. If you do  already have stream created, follow these steps[TODO] to capture/record message endpoint and OCID of the streampool and the stream. We need this info for this quickstart.
+2. Follow these steps[TODO] to create Streampool and Stream in OCI. If you do  already have stream created, follow these steps[TODO] to capture/record message endpoint and OCID of the streampool and the stream. We need this Information for upcoming steps.
 3. Node.js version 8.x or later. Download the latest [long-term support (LTS) version](https://nodejs.org).  
 4. Visual Studio Code(recommended) or any other integrated development environment (IDE).
 5. Install this OCI JavaScript SDK.
@@ -15,7 +15,7 @@ where you want to keep your code for this quickstart, and then run the following
 ```
 npm install oci-sdk
 ```
-6. Make sure you have [SDK and CLI Configuration File](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File) setup, for this quickstart. For production, you should use [Instance Principle Authentication](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm).
+6. Make sure you have [SDK and CLI Configuration File](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File) setup. For production, you should use [Instance Principle Authentication](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm).
 
 ## Producing messages to OSS
 1. Open your favorite editor, such as [Visual Studio Code](https://code.visualstudio.com) from the directory *wd*. You should already have oci-sdk packages for JavaScript installed in this directory(as per the *step 5 of Prerequisites* section ).
