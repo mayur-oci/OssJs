@@ -79,10 +79,10 @@ main().catch((err) => {
 const common = require("oci-common");
 const st = require("oci-streaming"); // OCI SDK package for OSS
 
-const ociConfigFile = "C:\\.oci\\config";
-const ociProfileName = "DEFAULT";
-const ociMessageEndpointForStream = "https://cell-1.streaming.ap-mumbai-1.oci.oraclecloud.com";
-const ociStreamOcid = "ocid1.stream.oc1.ap-mumbai-1.amaaaaaauwpiejqaxcfc2ht67wwohfg7mxcstfkh2kp3hweeenb3zxtr5khq";
+const ociConfigFile = "YOUR_OCI_CONFGI_FILE_PATH";
+const ociProfileName = "YOUR_OCI_PROFILE_FOR_USER_WHO_CREATED_THE_STREAM";
+const ociMessageEndpointForStream = "MESSAGE_ENDPOINT_FROM_STREAM_CREATION_STEP";
+const ociStreamOcid = "OCID_FOR_THE_STREAM_YOU_CREATED";
 
 // provide authentication for OCI and OSS
 const provider = new common.ConfigFileAuthenticationDetailsProvider(ociConfigFile, ociProfileName);
