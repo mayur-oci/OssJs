@@ -13,8 +13,8 @@ async function main() {
   const client = new st.StreamClient({ authenticationDetailsProvider: provider });
 
 
-  client.endpoint = stream.messagesEndpoint;
-  const streamId = stream.id;
+  client.endpoint = "https://cell-1.streaming.ap-mumbai-1.oci.oraclecloud.com";
+  const streamId = "ocid1.stream.oc1.ap-mumbai-1.amaaaaaauwpiejqap7zi4qveifbb6rh7qamqedjhkphqdejdb4bsg7bfnjla";
 
   // build up a putRequest and publish some messages to the stream
   let messages = [];
