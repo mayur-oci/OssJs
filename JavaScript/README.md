@@ -64,7 +64,11 @@ main().catch((err) => {
   console.log("Error occurred: ", err);
 });
 ```
-3. In the OCI Web Console, quickly go to your Stream Page and click on *Load Messages* button. You should see the messages we just produced as below.
+3. Run the code on the terminal(from the same directory *wd*) follows 
+```
+node run Producer.js
+```
+4. In the OCI Web Console, quickly go to your Stream Page and click on *Load Messages* button. You should see the messages we just produced as below.
 ![See Produced Messages in OCI Wb Console](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/StreamExampleLoadMessages.png?raw=true)
 
   
