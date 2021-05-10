@@ -1,13 +1,13 @@
 # Create Stream in OCI Web Console
 
- 1. Every *Stream* in OSS belongs to a logical container called *Stream Pool*. We can create a stream pool as shown below
+ 1. Every *Stream* in OSS belongs to a logical container called *Stream Pool*. Hence we first need to create a stream pool as shown below
 ![StreamPool Creation](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/StreamPoolCreation.png?raw=true)
 
       As shown above for the quick-start guides, we choose *Public Endpoint* for streampools and encryption managed by OCI.
       
  2. Once we have a stream pool created, we can now create the stream within it, as shown below
  ![Stream Creation](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/StreamCreation.png?raw=true)
-Make sure to choose radio button *Select Existing Stream Pool* streampool and then right Stream Pool in the dropdown, as shown above. In our case, it would be *StreampoolExample*. Also for our quick-start guide, we are using partition count of 1 for our stream *StreamExample*.
+Make sure to choose radio button *Select Existing Stream Pool* streampool and then choose the right Stream Pool in the dropdown, as shown above. In our case, it would be *StreampoolExample*. Also for our quick-start guide, we are using partition count of 1 for our stream *StreamExample*.
 
 3. For readers interested in using OCI SDK for OSS, you need two pieces of information, viz 1. OCID of the Stream & 2. Message Endpoint of the Stream. You can grab this information, as shown below
 ![Stream Info for OCI SDK](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/StreamPageInfo.png?raw=true)
