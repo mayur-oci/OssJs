@@ -198,10 +198,13 @@ node run Consumer.js
 $:/path/to/directory/wd>node Consumer.js
 Starting a simple message loop with a group cursor
 Creating a cursor for group exampleGroup01000, instance exampleInstance-1.
-Read 3 messages.
+Read 6 messages.
 Key: messageKey1, Value: messageValue1, Partition: 0
 Key: messageKey2, Value: messageValue2, Partition: 0
 Key: messageKey3, Value: messageValue3, Partition: 0
+Key: Null, Value: message value and key null, Partition: 0
+Key: Null, Value: message value and key null, Partition: 0
+Key: Null, Value: message value and key null, Partition: 0
 Read 0 messages.
 Read 0 messages.
 Read 0 messages.
