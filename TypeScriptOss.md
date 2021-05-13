@@ -100,6 +100,7 @@ $:/path/to/directory/wd>node Producer.js
  You can produce multiple test messages by clicking *Produce* button back to back, as shown below
 ![Produce multiple test message by clicking Produce button](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/ActualProduceMessagePopUp.png?raw=true)
 2. Open your favorite editor, such as [Visual Studio Code](https://code.visualstudio.com) from the directory *wd*. You should already have oci-sdk packages for TypeScript installed in this directory(as per the *step 6 of Prerequisites* section ).
+
 3. Create new file named *Consumer.ts* in this directory and paste the following code in it.
 ```TypeScript
 const common = require("oci-common");
