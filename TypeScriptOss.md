@@ -28,15 +28,15 @@ npm install oci-streaming
 7. Make sure you have [SDK and CLI Configuration File](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File) setup. For production, you should use [Instance Principle Authentication](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm).
 
 ## Producing messages to OSS
-1. Open your favorite editor, such as [Visual Studio Code](https://code.visualstudio.com) from the directory *wd*. You should already have oci-sdk packages for JavaScript installed in this directory(as per the *step 5 of Prerequisites* section ).
-2. Create new file named *Producer.js* in this directory and paste the following code in it.
-```JavaScript
+1. Open your favorite editor, such as [Visual Studio Code](https://code.visualstudio.com) from the directory *wd*. You should already have oci-sdk packages for TypeScript installed in this directory(as per the *step 6 of Prerequisites* section).
+2. Create new file named *Producer.ts* in this directory and paste the following code in it.
+```TypeScript
 const common = require("oci-common");
 const st = require("oci-streaming"); // OCI SDK package for OSS
 
 const ociConfigFile = "YOUR_OCI_CONFGI_FILE_PATH";
 const ociProfileName = "YOUR_OCI_PROFILE_FOR_USER_WHO_CREATED_THE_STREAM";
-const ociMessageEndpointForStream = "MESSAGE_ENDPOINT_FROM_STREAM_CREATION_STEP";
+const ociMessageEndpointForStream = "MESSAGE_ENDPOINT_FROM_STREAM_CREATION_STEP" // example value "https://cell-1.streaming.ap-mumbai-1.oci.oraclecloud.com"
 const ociStreamOcid = "OCID_FOR_THE_STREAM_YOU_CREATED";
 
 // provide authentication for OCI and OSS
@@ -73,10 +73,21 @@ async function main() {
 main().catch((err) => {
   console.log("Error occurred: ", err);
 });
+
 ```
 3. Run the code on the terminal(from the same directory *wd*) follows 
 ```
+tsc Producer.ts # compiles Producer.ts generates Producer.js
 node run Producer.js
+```
+You should see output similar to following on termnal
+```
+$ node Producer.js
+  Publishing 3 messages to stream ocid1.stream.oc1.XXXX.
+  Published messages to parition 0, offset 1314
+  Published messages to parition 0, offset 1315
+  Published messages to parition 0, offset 1316
+
 ```
 4. In the OCI Web Console, quickly go to your Stream Page and click on *Load Messages* button. You should see the messages we just produced as below.
 ![See Produced Messages in OCI Wb Console](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/StreamExampleLoadMessages.png?raw=true)
