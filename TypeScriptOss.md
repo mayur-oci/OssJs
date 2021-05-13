@@ -94,7 +94,7 @@ $:/path/to/directory/wd>node Producer.js
 
   
 ## Consuming messages from OSS
-1. First produce messages to the stream you want to consumer message from unless you already have messages in the stream. You can produce message easily from *OCI Web Console* using simple *Produce Test Message* button as shown below
+1. First produce messages to the stream you want to consume message from unless you already have messages in the stream. You can produce message easily from *OCI Web Console* using simple *Produce Test Message* button as shown below
 ![Produce Test Message Button](https://github.com/mayur-oci/OssJs/blob/main/JavaScript/ProduceButton.png?raw=true)
  
  You can produce multiple test messages by clicking *Produce* button back to back, as shown below
