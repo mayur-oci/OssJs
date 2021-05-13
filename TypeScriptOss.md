@@ -13,12 +13,18 @@ This quickstart shows how to produce messages to and consume messages from an [O
 npm install -g typescript
 ```
 5. Visual Studio Code(recommended) or any other integrated development environment (IDE).
-6. Install this OCI TypeScript SDK.
+6. Install this OCI TypeScript SDK pack.
 Open a command prompt that has *npm* in its path, change to directory(call it *wd*)
 where you want to keep your code for this quickstart, and then run the following command to install this OCI TypeScript SDK:
 ```
 npm install oci-sdk
 ```
+To be more efficient with dependencies you can install just two packages from the OCI TypeScript SDK for Streaming and Authnetication; namely `oci-streaming` and `oci-common` instead of entire OCI TypeScript SDK.
+```
+npm install oci-common
+npm install oci-streaming
+```
+
 7. Make sure you have [SDK and CLI Configuration File](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File) setup. For production, you should use [Instance Principle Authentication](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm).
 
 ## Producing messages to OSS
