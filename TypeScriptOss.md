@@ -214,5 +214,5 @@ Read 0 messages.
 ## Next Steps
 Please refer to
 
- 1. [Github for OCI Javascript SDK](https://github.com/oracle/oci-typescript-sdk)
- 2. [Streaming Examples with Admin and Client APIs from OCI](https://github.com/oracle/oci-typescript-sdk/blob/master/examples/javascript/streaming.js)
+ 1. [Github for OCI TypeScript SDK](https://github.com/oracle/oci-typescript-sdk)
+ 2. [Streaming Examples with Admin and Client APIs](https://github.com/oracle/oci-typescript-sdk/blob/master/examples/javascript/streaming.js)
