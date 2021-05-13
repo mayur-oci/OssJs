@@ -157,14 +157,20 @@ async function simpleMessageLoop(client, streamId, initialCursor) {
       };
       const response = await client.getMessages(getRequest);
       console.log("Read %s messages.", response.items.length);
-      for (var message of response.items) {  
-        console.log(
-          "Key: %s, Value: %s, Partition: %s",
-          Buffer.from(message.key, "base64").toString(),
-          Buffer.from(message.value, "base64").toString(),
-          Buffer.from(message.partition, "utf8").toString()
-        );
+      for (var message of response.items) { 
+        if (message.key !== null)  {         
+            console.log("Key: %s, Value: %s, Partition: %s",
+            Buffer.from(message.key, "base64").toString(),
+            Buffer.from(message.value, "base64").toString(),
+            Buffer.from(message.partition, "utf8").toString());
+        }
+       else{
+            console.log("Key: Null, Value: %s, Partition: %s",
+                Buffer.from(message.value, "base64").toString(),
+                Buffer.from(message.partition, "utf8").toString());
+       }
       }
+      
       // getMessages is a throttled method; clients should retrieve sufficiently large message
       // batches, as to avoid too many http requests.
       await delay(2);
